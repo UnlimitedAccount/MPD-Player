@@ -7,13 +7,14 @@ Installation Mpdplayer 3.0 (Lancar)
 
 1.
 Install Java 17 on Ububntu 20.04 or 18.04
-https://ubuntuhandbook.org/index.php/2021/03/oracle-java-16-released-install-ubuntu-20-04/
+sudo add-apt-repository ppa:linuxuprising/java && sudo apt update && sudo apt install oracle-java17-installer
 
 2.
 Install latest FFMPEG or use your old ( Advice use lates for quick start)
 wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
 tar -xf ffmpeg-release-amd64-static.tar.xz
-then copy file ffmpeg from root to usr/bin
+cd /root/ffmpeg*
+cp ffmpeg /usr/bin/
 
 3.
 Make Ramdisk 
@@ -24,11 +25,12 @@ mount -t tmpfs -o size=1024M tmpfs /tmp/ramdisk
 4.
 Install your Deb package
 cd /home
-wget https://github.com/DRM-Scripts/MPD-Player/raw/master/mpd_player.deb
+wget https://github.com/UnlimitedAccount/MPD-Player/raw/master/mpd_player.deb
 dpkg -i mpd_player.deb
 
 After install mpdplayer start automatic
-Stop mpdplayer service systemctl stop mpdplayer
+Stop mpdplayer service 
+systemctl stop mpdplayer
 
 5.
 Rename V2 files
@@ -37,7 +39,7 @@ mv /etc/mpdplayer/mpd.conf /etc/mpdplayer/mpd-old.conf
 
 6.
 Download V3 files
-wget https://github.com/DRM-Scripts/MPD-Player/raw/master/mpdplayer.tar
+wget https://github.com/UnlimitedAccount/MPD-Player/raw/master/mpdplayer.tar
 tar -xf mpdplayer.tar
 
 7.
@@ -50,7 +52,7 @@ Web interface
 systemctl start mpdplayer
 http://127.0.0.1:8989/ui
 admin
-123
+lucals
 
 9.
 Useful commands
@@ -62,7 +64,7 @@ systemctl restart mpdplayer
 If you want add auto restart
 crontab -e
 Please copy 
-0 5 * * /opt/mpdplayer/bin/restartService.sh
+0 5 * * * /opt/mpdplayer/bin/restartService.sh
 I's mean every Morning at 5:00am mpdplayer going restart
 
 11.
